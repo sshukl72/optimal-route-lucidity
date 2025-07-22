@@ -1,3 +1,27 @@
+# 🚀 Getting Started
+
+ # 🛠 Prerequisites
+ - Java 17 or above installed
+ - Git
+ - IntelliJ IDEA (recommended) or any Java IDE
+
+ # 🧑‍💻 Steps to Run the Project
+
+  **Clone the repository**
+  - git clone https://github.com/sshukl72/optimal-route-lucidity.git
+  - cd /path-to-copied-location/optimal-route-lucidity
+  - Open in IntelliJ IDEA
+
+  **Open IntelliJ**
+  - Click on File → Open... and select the project directory
+  
+  **Run the Application**
+  - Navigate to DeliveryAppDriver.java inside the main package
+  - Right-click and choose Run 'DeliveryAppDriver.main()'
+
+  **Output**
+   -The console will show the best delivery route and the total time in minutes
+
 # 🚴 Delivery Route Optimizer
 
 This project helps a delivery executive, Aman, determine the **fastest way to complete multiple food deliveries**. Using real-world geographic coordinates, preparation times, and a route-planning algorithm, it computes the optimal sequence of pickups and drop-offs for a batch of food delivery orders.
