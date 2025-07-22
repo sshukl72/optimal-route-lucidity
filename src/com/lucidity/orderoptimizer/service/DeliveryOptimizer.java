@@ -1,8 +1,7 @@
 package com.lucidity.orderoptimizer.service;
 
 import com.lucidity.orderoptimizer.common.Response;
-import com.lucidity.orderoptimizer.model.geo.LocationDetails;
-import com.lucidity.orderoptimizer.model.order.DeliveryPatnerDetails;
+import com.lucidity.orderoptimizer.model.order.DeliveryPartnerDetails;
 import com.lucidity.orderoptimizer.model.order.OrderDetails;
 import com.lucidity.orderoptimizer.model.geo.CurrentLocationDetails;
 
@@ -31,16 +30,16 @@ public class DeliveryOptimizer {
      * This method use backtracking to track all route possible with few condition such as :
      *  - The pickup of order should happen before delivery
      *  - We deliver the exact package to the consumer */
-    public Response<String> findBestRoute(DeliveryPatnerDetails deliveryPatnerDetails, List<OrderDetails> orders) {
+    public Response<String> findBestRoute(DeliveryPartnerDetails deliveryPartnerDetails, List<OrderDetails> orders) {
 
-        if(isValidObject(deliveryPatnerDetails) || isValidObject(deliveryPatnerDetails.getDeliveryPartnerLocationDetails())){
+        if(isValidObject(deliveryPartnerDetails) || isValidObject(deliveryPartnerDetails.getDeliveryPartnerLocationDetails())){
             return Response.failure(DELIVERY_PARTNER_OBJECT_IS_NULL);
         }
-        else if (isValidDoubleValue(deliveryPatnerDetails.getSpeed())) {
-            return Response.failure(INVALID_SPEED_FOR_DELIVERY_BOY.concat(deliveryPatnerDetails.toString()));
+        else if (isValidDoubleValue(deliveryPartnerDetails.getSpeed())) {
+            return Response.failure(INVALID_SPEED_FOR_DELIVERY_BOY.concat(deliveryPartnerDetails.toString()));
         }
-        else if(isValidDoubleValue(deliveryPatnerDetails.getDeliveryPartnerLocationDetails().getLatitude()) || isValidDoubleValue(deliveryPatnerDetails.getDeliveryPartnerLocationDetails().getLongitude())){
-            return Response.failure(INVALID_LATITUDE_OR_LONGITUDE.concat(deliveryPatnerDetails.getDeliveryPartnerLocationDetails().toString()));
+        else if(isValidDoubleValue(deliveryPartnerDetails.getDeliveryPartnerLocationDetails().getLatitude()) || isValidDoubleValue(deliveryPartnerDetails.getDeliveryPartnerLocationDetails().getLongitude())){
+            return Response.failure(INVALID_LATITUDE_OR_LONGITUDE.concat(deliveryPartnerDetails.getDeliveryPartnerLocationDetails().toString()));
         }
 
 
@@ -60,11 +59,11 @@ public class DeliveryOptimizer {
 
         CurrentLocationDetails currentState = new CurrentLocationDetails();
         currentState.setTime(INITIAL_START_TIME);
-        currentState.setCurrentLocation(deliveryPatnerDetails.getDeliveryPartnerLocationDetails());
+        currentState.setCurrentLocation(deliveryPartnerDetails.getDeliveryPartnerLocationDetails());
 
         Double bestTime = Double.MAX_VALUE;
         PathPLanner pathPLanner = new PathPLanner();
-        bestTime = pathPLanner.allPossibleRoutesWithLeastTime(currentState, orders.size(), orderMap, bestTime, deliveryPatnerDetails.getSpeed());
+        bestTime = pathPLanner.allPossibleRoutesWithLeastTime(currentState, orders.size(), orderMap, bestTime, deliveryPartnerDetails.getSpeed());
 
         return Response.success(SHORTEST_TIME_TAKEN_FOR_THIS_DELIVERY.concat(String.valueOf(bestTime.intValue())).concat(MINUTES).concat(String.valueOf((int) ((bestTime - bestTime.intValue()) * 60))).concat(SECOND));
 

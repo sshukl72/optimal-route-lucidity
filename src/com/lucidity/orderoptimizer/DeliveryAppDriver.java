@@ -3,7 +3,7 @@ package com.lucidity.orderoptimizer;
 import com.lucidity.orderoptimizer.common.Response;
 import com.lucidity.orderoptimizer.model.geo.LocationDetails;
 import com.lucidity.orderoptimizer.model.order.ConsumerDetails;
-import com.lucidity.orderoptimizer.model.order.DeliveryPatnerDetails;
+import com.lucidity.orderoptimizer.model.order.DeliveryPartnerDetails;
 import com.lucidity.orderoptimizer.model.order.OrderDetails;
 import com.lucidity.orderoptimizer.model.order.RestaurantDetails;
 import com.lucidity.orderoptimizer.service.DeliveryOptimizer;
@@ -14,7 +14,7 @@ import java.util.List;
 public class DeliveryAppDriver {
     public static void main(String[] args) {
         LocationDetails deliveryBoyCurrentLocation = LocationDetails.builder().latitude(12.9352).longitude(77.6141).build();
-        DeliveryPatnerDetails deliveryBoy = DeliveryPatnerDetails.builder().deliveryPartnerName("SHUBHAM").deliveryPartnerLocationDetails(deliveryBoyCurrentLocation).speed(20.0).build();
+        DeliveryPartnerDetails deliveryBoy = DeliveryPartnerDetails.builder().deliveryPartnerName("SHUBHAM").deliveryPartnerLocationDetails(deliveryBoyCurrentLocation).speed(20.0).build();
 
         LocationDetails firstRestaurantCurrentLocation = LocationDetails.builder().latitude(12.936).longitude(77.610).build();
         RestaurantDetails firstRestaurantDetail = RestaurantDetails.builder().restaurantName("Behroz Biryani").restaurantLocation(firstRestaurantCurrentLocation).preparationTime(10.0).build();

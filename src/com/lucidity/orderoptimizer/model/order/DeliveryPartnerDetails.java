@@ -4,13 +4,13 @@ import com.lucidity.orderoptimizer.model.geo.LocationDetails;
 
 import java.util.Objects;
 
-public class DeliveryPatnerDetails {
+public class DeliveryPartnerDetails {
 
     private final String deliveryPartnerName;
     private final LocationDetails deliveryPartnerLocationDetails;
     private final Double speed;
 
-    private DeliveryPatnerDetails(Builder builder) {
+    private DeliveryPartnerDetails(Builder builder) {
         this.deliveryPartnerName = builder.deliveryPartnerName;
         this.deliveryPartnerLocationDetails = builder.deliveryPartnerLocationDetails;
         this.speed = builder.speed;
@@ -29,7 +29,7 @@ public class DeliveryPatnerDetails {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof DeliveryPatnerDetails that)) return false;
+        if (!(o instanceof DeliveryPartnerDetails that)) return false;
         return Objects.equals(deliveryPartnerName, that.deliveryPartnerName) && Objects.equals(deliveryPartnerLocationDetails, that.deliveryPartnerLocationDetails) && Objects.equals(speed, that.speed);
     }
 
@@ -68,8 +68,8 @@ public class DeliveryPatnerDetails {
             return this;
         }
 
-        public DeliveryPatnerDetails build() {
-            return new DeliveryPatnerDetails(this);
+        public DeliveryPartnerDetails build() {
+            return new DeliveryPartnerDetails(this);
         }
     }
 
