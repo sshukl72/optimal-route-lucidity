@@ -1,18 +1,18 @@
 package com.lucidity.orderoptimizer.model.order;
 
-import com.lucidity.orderoptimizer.model.geo.LocationDetails;
+import com.lucidity.orderoptimizer.model.geo.Coordinate;
 
 import java.util.Objects;
 
 public class RestaurantDetails {
 
     private final String restaurantName;
-    private final LocationDetails restaurantLocationDetails;
+    private final Coordinate restaurantCoordinate;
     private final Double preparationTime;
 
     private RestaurantDetails(Builder builder) {
         this.restaurantName = builder.restaurantName;
-        this.restaurantLocationDetails = builder.restaurantLocationDetails;
+        this.restaurantCoordinate = builder.restaurantCoordinate;
         this.preparationTime = builder.preparationTime;
     }
 
@@ -20,8 +20,8 @@ public class RestaurantDetails {
         return restaurantName;
     }
 
-    public LocationDetails getRestaurantLocation() {
-        return restaurantLocationDetails;
+    public Coordinate getRestaurantLocation() {
+        return restaurantCoordinate;
     }
 
     public Double getPreparationTime() {
@@ -32,19 +32,19 @@ public class RestaurantDetails {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof RestaurantDetails that)) return false;
-        return Objects.equals(restaurantName, that.restaurantName) && Objects.equals(restaurantLocationDetails, that.restaurantLocationDetails) && Objects.equals(preparationTime, that.preparationTime);
+        return Objects.equals(restaurantName, that.restaurantName) && Objects.equals(restaurantCoordinate, that.restaurantCoordinate) && Objects.equals(preparationTime, that.preparationTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(restaurantName, restaurantLocationDetails, preparationTime);
+        return Objects.hash(restaurantName, restaurantCoordinate, preparationTime);
     }
 
     @Override
     public String toString() {
         return "RestaurantDetails{" +
                 "restaurantName='" + restaurantName + '\'' +
-                ", restaurantLocationDetails=" + restaurantLocationDetails +
+                ", restaurantLocationDetails=" + restaurantCoordinate +
                 ", preparationTime=" + preparationTime +
                 '}';
     }
@@ -52,7 +52,7 @@ public class RestaurantDetails {
     public static class Builder {
 
         private String restaurantName;
-        private LocationDetails restaurantLocationDetails;
+        private Coordinate restaurantCoordinate;
         private Double preparationTime;
 
         public Builder restaurantName(String restaurantName) {
@@ -60,8 +60,8 @@ public class RestaurantDetails {
             return this;
         }
 
-        public Builder restaurantLocation(LocationDetails restaurantLocationDetails) {
-            this.restaurantLocationDetails = restaurantLocationDetails;
+        public Builder restaurantLocation(Coordinate restaurantCoordinate) {
+            this.restaurantCoordinate = restaurantCoordinate;
             return this;
         }
 

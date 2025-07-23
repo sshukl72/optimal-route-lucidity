@@ -1,18 +1,18 @@
 package com.lucidity.orderoptimizer.model.order;
 
-import com.lucidity.orderoptimizer.model.geo.LocationDetails;
+import com.lucidity.orderoptimizer.model.geo.Coordinate;
 
 import java.util.Objects;
 
 public class DeliveryPartnerDetails {
 
     private final String deliveryPartnerName;
-    private final LocationDetails deliveryPartnerLocationDetails;
+    private final Coordinate deliveryPartnerCoordinate;
     private final Double speed;
 
     private DeliveryPartnerDetails(Builder builder) {
         this.deliveryPartnerName = builder.deliveryPartnerName;
-        this.deliveryPartnerLocationDetails = builder.deliveryPartnerLocationDetails;
+        this.deliveryPartnerCoordinate = builder.deliveryPartnerCoordinate;
         this.speed = builder.speed;
     }
 
@@ -21,8 +21,8 @@ public class DeliveryPartnerDetails {
         return deliveryPartnerName;
     }
 
-    public LocationDetails getDeliveryPartnerLocationDetails() {
-        return deliveryPartnerLocationDetails;
+    public Coordinate getDeliveryPartnerLocationDetails() {
+        return deliveryPartnerCoordinate;
     }
     public Double getSpeed(){ return  speed; }
 
@@ -30,19 +30,19 @@ public class DeliveryPartnerDetails {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof DeliveryPartnerDetails that)) return false;
-        return Objects.equals(deliveryPartnerName, that.deliveryPartnerName) && Objects.equals(deliveryPartnerLocationDetails, that.deliveryPartnerLocationDetails) && Objects.equals(speed, that.speed);
+        return Objects.equals(deliveryPartnerName, that.deliveryPartnerName) && Objects.equals(deliveryPartnerCoordinate, that.deliveryPartnerCoordinate) && Objects.equals(speed, that.speed);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(deliveryPartnerName, deliveryPartnerLocationDetails, speed);
+        return Objects.hash(deliveryPartnerName, deliveryPartnerCoordinate, speed);
     }
 
     @Override
     public String toString() {
         return "DeliveryPatnerDetails{" +
                 "deliveryPartnerName='" + deliveryPartnerName + '\'' +
-                ", deliveryPartnerLocationDetails=" + deliveryPartnerLocationDetails +
+                ", deliveryPartnerLocationDetails=" + deliveryPartnerCoordinate +
                 ", speed=" + speed +
                 '}';
     }
@@ -50,7 +50,7 @@ public class DeliveryPartnerDetails {
     public static class Builder {
 
         private String deliveryPartnerName;
-        private LocationDetails deliveryPartnerLocationDetails;
+        private Coordinate deliveryPartnerCoordinate;
         private Double speed;
 
         public Builder deliveryPartnerName(String deliveryPartnerName) {
@@ -58,8 +58,8 @@ public class DeliveryPartnerDetails {
             return this;
         }
 
-        public Builder deliveryPartnerLocationDetails(LocationDetails deliveryPartnerLocationDetails) {
-            this.deliveryPartnerLocationDetails = deliveryPartnerLocationDetails;
+        public Builder deliveryPartnerLocationDetails(Coordinate deliveryPartnerCoordinate) {
+            this.deliveryPartnerCoordinate = deliveryPartnerCoordinate;
             return this;
         }
 

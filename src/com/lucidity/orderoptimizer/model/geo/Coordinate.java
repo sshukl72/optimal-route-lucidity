@@ -2,12 +2,12 @@ package com.lucidity.orderoptimizer.model.geo;
 
 import java.util.Objects;
 
-public class LocationDetails {
+public class Coordinate {
 
     private final Double latitude;
     private final Double longitude;
 
-    private LocationDetails(Builder builder) {
+    private Coordinate(Builder builder) {
         this.latitude = builder.latitude;
         this.longitude = builder.longitude;
     }
@@ -25,9 +25,9 @@ public class LocationDetails {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof LocationDetails locationDetails)) return false;
-        return Objects.equals(latitude, locationDetails.latitude) &&
-                Objects.equals(longitude, locationDetails.longitude);
+        if (!(o instanceof Coordinate coordinate)) return false;
+        return Objects.equals(latitude, coordinate.latitude) &&
+                Objects.equals(longitude, coordinate.longitude);
     }
 
     @Override
@@ -57,8 +57,8 @@ public class LocationDetails {
             return this;
         }
 
-        public LocationDetails build() {
-            return new LocationDetails(this);
+        public Coordinate build() {
+            return new Coordinate(this);
         }
     }
 

@@ -7,7 +7,7 @@ import java.util.Set;
 public class CurrentLocationDetails {
 
     private Double time;
-    private LocationDetails currentLocationDetails;
+    private Coordinate currentCoordinate;
     private Set<String> picked = new HashSet<>();
     private Set<String> delivered = new HashSet<>();
 
@@ -19,12 +19,12 @@ public class CurrentLocationDetails {
         this.time = time;
     }
 
-    public LocationDetails getCurrentLocation() {
-        return currentLocationDetails;
+    public Coordinate getCurrentLocation() {
+        return currentCoordinate;
     }
 
-    public void setCurrentLocation(LocationDetails currentLocationDetails) {
-        this.currentLocationDetails = currentLocationDetails;
+    public void setCurrentLocation(Coordinate currentCoordinate) {
+        this.currentCoordinate = currentCoordinate;
     }
 
 
@@ -32,35 +32,28 @@ public class CurrentLocationDetails {
         return picked;
     }
 
-    public void setPicked(Set<String> picked) {
-        this.picked = picked;
-    }
-
     public Set<String> getDelivered() {
         return delivered;
     }
 
-    public void setDelivered(Set<String> delivered) {
-        this.delivered = delivered;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CurrentLocationDetails that)) return false;
-        return Objects.equals(time, that.time) && Objects.equals(currentLocationDetails, that.currentLocationDetails) && Objects.equals(picked, that.picked) && Objects.equals(delivered, that.delivered);
+        return Objects.equals(time, that.time) && Objects.equals(currentCoordinate, that.currentCoordinate) && Objects.equals(picked, that.picked) && Objects.equals(delivered, that.delivered);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(time, currentLocationDetails, picked, delivered);
+        return Objects.hash(time, currentCoordinate, picked, delivered);
     }
 
     @Override
     public String toString() {
         return "DeliveryState{" +
                 "time=" + time +
-                ", currentLocation=" + currentLocationDetails +
+                ", currentLocation=" + currentCoordinate +
                 ", picked=" + picked +
                 ", delivered=" + delivered +
                 '}';
